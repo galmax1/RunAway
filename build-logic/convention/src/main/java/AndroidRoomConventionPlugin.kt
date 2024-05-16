@@ -1,4 +1,6 @@
 import androidx.room.gradle.RoomExtension
+import com.galmax.convention.implementation
+import com.galmax.convention.ksp
 import com.galmax.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -19,9 +21,9 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                "implementation"(libs.findLibrary("room.runtime").get())
-                "implementation"(libs.findLibrary("room.ktx").get())
-                "ksp"(libs.findLibrary("room.compiler").get())
+                implementation(libs.findLibrary("room.runtime"))
+                implementation(libs.findLibrary("room.ktx"))
+                ksp(libs.findLibrary("room.compiler"))
             }
         }
     }
