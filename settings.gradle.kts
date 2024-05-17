@@ -20,10 +20,10 @@ dependencyResolutionManagement {
     }
 }
 
+gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:convention:testClasses"))
+
 rootProject.name = "RunAway"
-
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
 include(":app")
 include(":auth:data")
 include(":auth:domain")
