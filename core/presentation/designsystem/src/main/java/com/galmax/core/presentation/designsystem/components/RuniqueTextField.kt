@@ -1,4 +1,6 @@
-@file:OptIn(ExperimentalFoundationApi::class, ExperimentalFoundationApi::class)
+@file:OptIn(ExperimentalFoundationApi::class, ExperimentalFoundationApi::class,
+    ExperimentalFoundationApi::class
+)
 
 package com.galmax.core.presentation.designsystem.components
 
@@ -141,7 +143,7 @@ fun RuniqueTextField(
                         modifier = Modifier
                             .weight(1f)
                     ) {
-                        if (state.text.isNotEmpty() && !isFocused) {
+                        if (state.text.isEmpty() && !isFocused) {
                             Text(
                                 text = hint,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(

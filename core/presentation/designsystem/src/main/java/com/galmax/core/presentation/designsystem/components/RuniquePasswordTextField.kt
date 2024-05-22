@@ -123,7 +123,7 @@ fun RuniquePasswordTextField(
                         modifier = Modifier
                             .weight(1f)
                     ) {
-                        if (state.text.isNotEmpty() && !isFocused) {
+                        if (state.text.isEmpty() && !isFocused) {
                             Text(
                                 text = hint,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(
