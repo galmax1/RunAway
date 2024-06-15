@@ -42,6 +42,12 @@ import com.galmax.core.presentation.designsystem.components.RuniqueTextField
 import com.galmax.core.presentation.ui.ObserveAsEvents
 import org.koin.androidx.compose.koinViewModel
 
+
+/**
+ * Email: test111@gmail.com
+ * Pass: Password1
+ */
+
 @Composable
 fun LoginScreenRoot(
     onLoginSuccess: () -> Unit,

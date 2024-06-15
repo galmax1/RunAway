@@ -4,6 +4,7 @@ import android.app.Application
 import com.galmax.auth.data.di.authDataModule
 import com.galmax.auth.presentation.di.authViewModelModule
 import com.galmax.core.data.di.coreDataModule
+import com.galmax.run.presentation.run_overview.di.runViewModelModule
 import com.galmax.runaway.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -28,6 +29,8 @@ class RuniqueApp : Application() {
 
                 authDataModule,
                 authViewModelModule,
+
+                runViewModelModule,
             )
         }
     }
