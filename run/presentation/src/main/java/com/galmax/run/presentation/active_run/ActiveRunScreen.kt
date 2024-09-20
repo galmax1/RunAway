@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.galmax.core.presentation.designsystem.RunAwayTheme
 import com.galmax.core.presentation.designsystem.StartIcon
 import com.galmax.core.presentation.designsystem.StopIcon
+import com.galmax.core.presentation.designsystem.components.RuniqueActionButton
 import com.galmax.core.presentation.designsystem.components.RuniqueDialog
 import com.galmax.core.presentation.designsystem.components.RuniqueFloatingActionButton
 import com.galmax.core.presentation.designsystem.components.RuniqueOutlinedActionButton
@@ -34,6 +35,7 @@ import com.galmax.core.presentation.designsystem.components.RuniqueToolbar
 import com.galmax.run.presentation.R
 import com.galmax.run.presentation.active_run.components.RunDataCard
 import com.galmax.run.presentation.active_run.maps.TrackerMap
+import com.galmax.run.presentation.active_run.service.ActiveRunService
 import com.galmax.run.presentation.util.hasLocationPermission
 import com.galmax.run.presentation.util.hasNotificationPermission
 import com.galmax.run.presentation.util.shouldShowLocationPermissionRationale
@@ -42,11 +44,13 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ActiveRunScreenRoot(
+    onServiceToggle: (isServiceRunning: Boolean) -> Unit,
     viewModel: ActiveRunViewModel = koinViewModel()
 ) {
 
     ActiveRunScreen(
         state = viewModel.state,
+        onServiceToggle = onServiceToggle,
         onAction = viewModel::onAction
     )
 
@@ -55,6 +59,7 @@ fun ActiveRunScreenRoot(
 @Composable
 private fun ActiveRunScreen(
     state: ActiveRunState,
+    onServiceToggle: (isServiceRunning: Boolean) -> Unit,
     onAction: (ActiveRunAction) -> Unit
 ) {
     val context = LocalContext.current
@@ -105,6 +110,18 @@ private fun ActiveRunScreen(
 
         if (!showLocationRationale && !showNotificationRationale) {
             permissionLauncher.requestRuniquePermissions(context)
+        }
+    }
+
+    LaunchedEffect(key1 = state.isRunFinished) {
+        if (state.isRunFinished) {
+            onServiceToggle(false)
+        }
+    }
+
+    LaunchedEffect(key1 = state.shouldTrack) {
+        if (context.hasLocationPermission() && state.shouldTrack && !ActiveRunService.isServiceActive) {
+            onServiceToggle(true)
         }
     }
 
@@ -162,6 +179,36 @@ private fun ActiveRunScreen(
         }
     }
 
+    if (!state.shouldTrack && state.hasStartedRunning) {
+        RuniqueDialog(
+            title = stringResource(id = R.string.running_is_paused),
+            onDismiss = {
+                onAction(ActiveRunAction.OnResumeRunClick)
+            },
+            description = stringResource(id = R.string.resume_or_finish_run),
+            primaryButton = {
+                RuniqueActionButton(
+                    text = stringResource(id = R.string.resume),
+                    isLoading = false,
+                    onClick = {
+                        onAction(ActiveRunAction.OnResumeRunClick)
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+            },
+            secondaryButton = {
+                RuniqueOutlinedActionButton(
+                    text = stringResource(id = R.string.finish),
+                    isLoading = state.isSavingRun,
+                    onClick = {
+                        onAction(ActiveRunAction.OnFinishRunClick)
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+            }
+        )
+    }
+
     if (state.showLocationRationale || state.showNotificationRationale) {
         RuniqueDialog(
             title = stringResource(id = R.string.permission_required),
@@ -211,6 +258,7 @@ private fun ActivityResultLauncher<Array<String>>.requestRuniquePermissions(
         !hasLocationPermission && !hasNotificationPermission -> {
             launch(locationPermissions + notificationPermission)
         }
+
         !hasLocationPermission -> launch(locationPermissions)
         !hasNotificationPermission -> launch(notificationPermission)
     }
@@ -222,7 +270,8 @@ private fun ActiveRunScreenPreview() {
     RunAwayTheme {
         ActiveRunScreen(
             state = ActiveRunState(),
-            onAction = {}
+            onAction = {},
+            onServiceToggle = {}
         )
     }
 }
