@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.runaway.android.application.compose)
     alias(libs.plugins.runaway.jvm.ktor)
-    alias(libs.plugins.mapsplatform.secrets.plugin)
 }
 
 android {

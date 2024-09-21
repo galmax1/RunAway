@@ -1,6 +1,5 @@
 package com.galmax.core.domain.location
 
-import kotlin.math.atan
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin
