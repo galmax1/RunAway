@@ -4,6 +4,7 @@ import android.app.Application
 import com.galmax.auth.data.di.authDataModule
 import com.galmax.auth.presentation.di.authViewModelModule
 import com.galmax.core.data.di.coreDataModule
+import com.galmax.core.database.di.databaseModule
 import com.galmax.run.location.di.locationModule
 import com.galmax.run.presentation.di.runPresentationModule
 import com.galmax.runaway.di.appModule
@@ -37,7 +38,9 @@ class RuniqueApp : Application() {
 
                 runPresentationModule,
 
-                locationModule
+                locationModule,
+
+                databaseModule
             )
         }
     }
