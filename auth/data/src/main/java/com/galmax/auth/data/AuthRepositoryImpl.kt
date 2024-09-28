@@ -7,7 +7,7 @@ import com.galmax.core.domain.SessionStorage
 import com.galmax.core.domain.util.DataError
 import com.galmax.core.domain.util.EmptyResult
 import com.galmax.core.domain.util.Result
-import com.galmax.core.domain.util.asEmptyResult
+import com.galmax.core.domain.util.asEmptyDataResult
 import io.ktor.client.HttpClient
 
 class AuthRepositoryImpl(
@@ -33,7 +33,7 @@ class AuthRepositoryImpl(
                 )
             )
         }
-        return result.asEmptyResult()
+        return result.asEmptyDataResult()
     }
 
     override suspend fun register(email: String, password: String): EmptyResult<DataError.Network> {

@@ -6,6 +6,7 @@ import com.galmax.auth.presentation.di.authViewModelModule
 import com.galmax.core.data.di.coreDataModule
 import com.galmax.core.database.di.databaseModule
 import com.galmax.run.location.di.locationModule
+import com.galmax.run.network.di.networkModule
 import com.galmax.run.presentation.di.runPresentationModule
 import com.galmax.runaway.di.appModule
 import kotlinx.coroutines.CoroutineScope
@@ -30,17 +31,13 @@ class RuniqueApp : Application() {
             androidContext(this@RuniqueApp)
             modules(
                 appModule,
-
                 coreDataModule,
-
                 authDataModule,
                 authViewModelModule,
-
                 runPresentationModule,
-
                 locationModule,
-
-                databaseModule
+                databaseModule,
+                networkModule
             )
         }
     }
