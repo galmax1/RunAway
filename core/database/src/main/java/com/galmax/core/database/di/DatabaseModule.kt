@@ -3,6 +3,7 @@ package com.galmax.core.database.di
 import androidx.room.Room
 import com.galmax.core.database.RoomLocalRunDataSource
 import com.galmax.core.database.RunDatabase
+import com.galmax.core.database.dao.RunPendingSyncDao
 import com.galmax.core.domain.run.LocalRunDataSource
 import org.koin.android.ext.koin.androidApplication
 import org.koin.core.module.dsl.singleOf
@@ -19,6 +20,7 @@ val databaseModule = module {
     }
 
     single { get<RunDatabase>().runDao }
+    single { get<RunDatabase>().runPendingSyncDao }
 
     singleOf(::RoomLocalRunDataSource).bind<LocalRunDataSource>()
 }
