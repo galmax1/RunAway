@@ -8,6 +8,7 @@ import com.galmax.core.domain.run.RemoteRunDataSource
 import com.galmax.core.domain.run.Run
 import com.galmax.core.domain.run.RunId
 import com.galmax.core.domain.run.RunRepository
+import com.galmax.core.domain.run.SyncRunScheduler
 import com.galmax.core.domain.util.DataError
 import com.galmax.core.domain.util.EmptyResult
 import com.galmax.core.domain.util.Result
@@ -25,7 +26,8 @@ class OfflineFirstRunRepository(
     private val remoteRunDataSource: RemoteRunDataSource,
     private val applicationScope: CoroutineScope,
     private val runPendingSyncDao: RunPendingSyncDao,
-    private val sessionStorage: SessionStorage
+    private val sessionStorage: SessionStorage,
+    private val syncRunScheduler: SyncRunScheduler
 ) : RunRepository {
 
     override fun getRuns(): Flow<List<Run>> {
@@ -33,7 +35,7 @@ class OfflineFirstRunRepository(
     }
 
     override suspend fun fetchRuns(): EmptyResult<DataError> {
-        return when(val result = remoteRunDataSource.getRuns()) {
+        return when (val result = remoteRunDataSource.getRuns()) {
             is Result.Error -> result.asEmptyDataResult()
             is Result.Success -> {
                 applicationScope.async {
@@ -55,10 +57,19 @@ class OfflineFirstRunRepository(
             mapPicture = mapPicture
         )
 
-        return when(remoteResult) {
+        return when (remoteResult) {
             is Result.Error -> {
-                Result.Success(Unit) // todo
+                applicationScope.launch {
+                    syncRunScheduler.scheduleSync(
+                        type = SyncRunScheduler.SyncType.CreateRun(
+                            run = runWithId,
+                            mapPictureBytes = mapPicture
+                        )
+                    )
+                }.join()
+                Result.Success(Unit)
             }
+
             is Result.Success -> {
                 applicationScope.async {
                     localRunDataSource.upsertRun(remoteResult.data).asEmptyDataResult()
@@ -82,6 +93,14 @@ class OfflineFirstRunRepository(
         val remoteResult = applicationScope.async {
             remoteRunDataSource.deleteRun(id)
         }.await()
+
+        if (remoteResult is Result.Error) {
+            applicationScope.launch {
+                syncRunScheduler.scheduleSync(
+                    type = SyncRunScheduler.SyncType.DeleteRun(id)
+                )
+            }.join()
+        }
     }
 
     override suspend fun syncPendingRuns() {
