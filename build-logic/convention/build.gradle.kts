@@ -38,6 +38,10 @@ gradlePlugin {
             id = "runaway.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
         }
+        register("androidDynamicFeature") {
+            id = "runaway.android.dynamic.feature"
+            implementationClass = "AndroidDynamicFeatureConventionPlugin"
+        }
         register("jvmLibrary") {
             id = "runaway.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"

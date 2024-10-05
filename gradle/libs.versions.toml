@@ -124,6 +124,7 @@ runaway-android-library = { id = "runaway.android.library", version = "unspecifi
 runaway-android-library-compose = { id = "runaway.android.library.compose", version = "unspecified" }
 runaway-android-feature-ui = { id = "runaway.android.feature.ui", version = "unspecified" }
 runaway-android-room = { id = "runaway.android.room", version = "unspecified" }
+runaway-android-dynamic-feature = { id = "runaway.android.dynamic.feature", version = "unspecified" }
 runaway-jvm-library = { id = "runaway.jvm.library", version = "unspecified" }
 runaway-jvm-ktor = { id = "runaway.jvm.ktor", version = "unspecified" }
 
