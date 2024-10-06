@@ -1,6 +1,7 @@
 package com.galmax.runaway
 
 import android.app.Application
+import android.content.Context
 import com.galmax.auth.data.di.authDataModule
 import com.galmax.auth.presentation.di.authViewModelModule
 import com.galmax.core.data.di.coreDataModule
@@ -10,6 +11,7 @@ import com.galmax.run.location.di.locationModule
 import com.galmax.run.network.di.networkModule
 import com.galmax.run.presentation.di.runPresentationModule
 import com.galmax.runaway.di.appModule
+import com.google.android.play.core.splitcompat.SplitCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import org.koin.android.ext.koin.androidContext
@@ -41,8 +43,13 @@ class RuniqueApp : Application() {
                 locationModule,
                 databaseModule,
                 networkModule,
-                runDataModule
+                runDataModule,
             )
         }
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        SplitCompat.install(this)
     }
 }
