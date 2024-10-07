@@ -28,12 +28,12 @@ import androidx.compose.ui.unit.dp
 import com.galmax.core.presentation.designsystem.RunAwayTheme
 import com.galmax.core.presentation.designsystem.StartIcon
 import com.galmax.core.presentation.designsystem.StopIcon
-import com.galmax.core.presentation.designsystem.components.RuniqueActionButton
-import com.galmax.core.presentation.designsystem.components.RuniqueDialog
-import com.galmax.core.presentation.designsystem.components.RuniqueFloatingActionButton
-import com.galmax.core.presentation.designsystem.components.RuniqueOutlinedActionButton
-import com.galmax.core.presentation.designsystem.components.RuniqueScaffold
-import com.galmax.core.presentation.designsystem.components.RuniqueToolbar
+import com.galmax.core.presentation.designsystem.components.RunAwayActionButton
+import com.galmax.core.presentation.designsystem.components.RunAwayDialog
+import com.galmax.core.presentation.designsystem.components.RunAwayFloatingActionButton
+import com.galmax.core.presentation.designsystem.components.RunAwayOutlinedActionButton
+import com.galmax.core.presentation.designsystem.components.RunAwayScaffold
+import com.galmax.core.presentation.designsystem.components.RunAwayToolbar
 import com.galmax.core.presentation.ui.ObserveAsEvents
 import com.galmax.run.presentation.R
 import com.galmax.run.presentation.active_run.components.RunDataCard
@@ -154,10 +154,10 @@ private fun ActiveRunScreen(
         }
     }
 
-    RuniqueScaffold(
+    RunAwayScaffold(
         withGradient = false,
         topAppBar = {
-            RuniqueToolbar(
+            RunAwayToolbar(
                 showBackButton = true,
                 title = stringResource(id = R.string.active_run),
                 onBackClick = {
@@ -166,7 +166,7 @@ private fun ActiveRunScreen(
             )
         },
         floatingActionButton = {
-            RuniqueFloatingActionButton(
+            RunAwayFloatingActionButton(
                 icon = if (state.shouldTrack) {
                     StopIcon
                 } else {
@@ -219,14 +219,14 @@ private fun ActiveRunScreen(
     }
 
     if (!state.shouldTrack && state.hasStartedRunning) {
-        RuniqueDialog(
+        RunAwayDialog(
             title = stringResource(id = R.string.running_is_paused),
             onDismiss = {
                 onAction(ActiveRunAction.OnResumeRunClick)
             },
             description = stringResource(id = R.string.resume_or_finish_run),
             primaryButton = {
-                RuniqueActionButton(
+                RunAwayActionButton(
                     text = stringResource(id = R.string.resume),
                     isLoading = false,
                     onClick = {
@@ -236,7 +236,7 @@ private fun ActiveRunScreen(
                 )
             },
             secondaryButton = {
-                RuniqueOutlinedActionButton(
+                RunAwayOutlinedActionButton(
                     text = stringResource(id = R.string.finish),
                     isLoading = state.isSavingRun,
                     onClick = {
@@ -249,7 +249,7 @@ private fun ActiveRunScreen(
     }
 
     if (state.showLocationRationale || state.showNotificationRationale) {
-        RuniqueDialog(
+        RunAwayDialog(
             title = stringResource(id = R.string.permission_required),
             onDismiss = { /* Normal dismissing is not allowed for permissions */ },
             description = when {
@@ -266,7 +266,7 @@ private fun ActiveRunScreen(
                 }
             },
             primaryButton = {
-                RuniqueOutlinedActionButton(
+                RunAwayOutlinedActionButton(
                     text = stringResource(id = R.string.okay),
                     isLoading = false,
                     onClick = {

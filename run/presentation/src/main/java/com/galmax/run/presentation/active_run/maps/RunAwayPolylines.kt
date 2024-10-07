@@ -8,7 +8,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.Polyline
 
 @Composable
-fun RuniquePolylines(
+fun RunAwayPolylines(
     locations: List<List<LocationTimestamp>>
 ) {
     val polylines = remember(locations) {

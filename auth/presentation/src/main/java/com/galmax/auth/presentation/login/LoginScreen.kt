@@ -36,9 +36,9 @@ import com.galmax.core.presentation.designsystem.EmailIcon
 import com.galmax.core.presentation.designsystem.Poppins
 import com.galmax.core.presentation.designsystem.RunAwayTheme
 import com.galmax.core.presentation.designsystem.components.GradientBackground
-import com.galmax.core.presentation.designsystem.components.RuniqueActionButton
-import com.galmax.core.presentation.designsystem.components.RuniquePasswordTextField
-import com.galmax.core.presentation.designsystem.components.RuniqueTextField
+import com.galmax.core.presentation.designsystem.components.RunAwayActionButton
+import com.galmax.core.presentation.designsystem.components.RunAwayPasswordTextField
+import com.galmax.core.presentation.designsystem.components.RunAwayTextField
 import com.galmax.core.presentation.ui.ObserveAsEvents
 import org.koin.androidx.compose.koinViewModel
 
@@ -120,7 +120,7 @@ private fun LoginScreen(
 
             Spacer(modifier = Modifier.height(48.dp))
 
-            RuniqueTextField(
+            RunAwayTextField(
                 state = state.email,
                 startIcon = EmailIcon,
                 endIcon = null,
@@ -130,7 +130,7 @@ private fun LoginScreen(
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(16.dp))
-            RuniquePasswordTextField(
+            RunAwayPasswordTextField(
                 state = state.password,
                 isPasswordVisible = state.isPasswordVisible,
                 onTogglePasswordVisibility = {
@@ -141,7 +141,7 @@ private fun LoginScreen(
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(32.dp))
-            RuniqueActionButton(
+            RunAwayActionButton(
                 text = stringResource(id = R.string.login),
                 isLoading = state.isLoggingIn,
                 enabled = state.canLogin && !state.isLoggingIn,

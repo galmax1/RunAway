@@ -21,8 +21,8 @@ import com.galmax.auth.presentation.R
 import com.galmax.core.presentation.designsystem.LogoIcon
 import com.galmax.core.presentation.designsystem.RunAwayTheme
 import com.galmax.core.presentation.designsystem.components.GradientBackground
-import com.galmax.core.presentation.designsystem.components.RuniqueActionButton
-import com.galmax.core.presentation.designsystem.components.RuniqueOutlinedActionButton
+import com.galmax.core.presentation.designsystem.components.RunAwayActionButton
+import com.galmax.core.presentation.designsystem.components.RunAwayOutlinedActionButton
 
 @Composable
 fun IntroScreenRoot(
@@ -50,7 +50,7 @@ fun IntroScreen(
                 .weight(1f),
             contentAlignment = Alignment.Center
         ) {
-            RuniqueLogoVertical()
+            RunAwayLogoVertical()
         }
         Column(
             modifier = Modifier
@@ -69,7 +69,7 @@ fun IntroScreen(
                 style = MaterialTheme.typography.bodySmall
             )
             Spacer(modifier = Modifier.height(32.dp))
-            RuniqueOutlinedActionButton(
+            RunAwayOutlinedActionButton(
                 text = stringResource(id = R.string.sign_in),
                 isLoading = false,
                 modifier = Modifier.fillMaxWidth(),
@@ -78,7 +78,7 @@ fun IntroScreen(
                 }
             )
             Spacer(modifier = Modifier.height(16.dp))
-            RuniqueActionButton(
+            RunAwayActionButton(
                 text = stringResource(id = R.string.sign_up),
                 isLoading = false,
                 modifier = Modifier.fillMaxWidth(),
@@ -93,7 +93,7 @@ fun IntroScreen(
 }
 
 @Composable
-private fun RuniqueLogoVertical(
+private fun RunAwayLogoVertical(
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -107,7 +107,7 @@ private fun RuniqueLogoVertical(
         )
         Spacer(modifier = Modifier.height(12.dp))
         Text(
-            text = stringResource(id = R.string.runique),
+            text = stringResource(id = R.string.run_away),
             fontSize = 24.sp,
             fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.onBackground

@@ -39,12 +39,12 @@ import com.galmax.core.presentation.designsystem.CrossIcon
 import com.galmax.core.presentation.designsystem.EmailIcon
 import com.galmax.core.presentation.designsystem.Poppins
 import com.galmax.core.presentation.designsystem.RunAwayTheme
-import com.galmax.core.presentation.designsystem.RuniqueDarkRed
-import com.galmax.core.presentation.designsystem.RuniqueGray
+import com.galmax.core.presentation.designsystem.RunAwayDarkRed
+import com.galmax.core.presentation.designsystem.RunAwayGray
 import com.galmax.core.presentation.designsystem.components.GradientBackground
-import com.galmax.core.presentation.designsystem.components.RuniqueActionButton
-import com.galmax.core.presentation.designsystem.components.RuniquePasswordTextField
-import com.galmax.core.presentation.designsystem.components.RuniqueTextField
+import com.galmax.core.presentation.designsystem.components.RunAwayActionButton
+import com.galmax.core.presentation.designsystem.components.RunAwayPasswordTextField
+import com.galmax.core.presentation.designsystem.components.RunAwayTextField
 import com.galmax.core.presentation.ui.ObserveAsEvents
 import org.koin.androidx.compose.koinViewModel
 
@@ -146,7 +146,7 @@ fun RegisterScreen(
                 }
             )
             Spacer(modifier = Modifier.height(48.dp))
-            RuniqueTextField(
+            RunAwayTextField(
                 state = state.email,
                 startIcon = EmailIcon,
                 endIcon = if (state.isEmailValid) {
@@ -159,7 +159,7 @@ fun RegisterScreen(
                 keyboardType = KeyboardType.Email
             )
             Spacer(modifier = Modifier.height(16.dp))
-            RuniquePasswordTextField(
+            RunAwayPasswordTextField(
                 state = state.password,
                 isPasswordVisible = state.isPasswordVisible,
                 onTogglePasswordVisibility = {
@@ -193,7 +193,7 @@ fun RegisterScreen(
                 isValid = state.passwordValidationState.hasUpperCaseCharacter
             )
             Spacer(modifier = Modifier.height(32.dp))
-            RuniqueActionButton(
+            RunAwayActionButton(
                 text = stringResource(id = R.string.register),
                 isLoading = state.isRegistering,
                 enabled = state.canRegister,
@@ -219,7 +219,7 @@ fun PasswordRequirement(
         Icon(
             imageVector = if (isValid) CheckIcon else CrossIcon,
             contentDescription = null,
-            tint = if (isValid) RuniqueGray else RuniqueDarkRed
+            tint = if (isValid) RunAwayGray else RunAwayDarkRed
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(

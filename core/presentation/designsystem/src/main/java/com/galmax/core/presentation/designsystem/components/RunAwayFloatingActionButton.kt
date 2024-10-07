@@ -19,7 +19,7 @@ import com.galmax.core.presentation.designsystem.RunAwayTheme
 import com.galmax.core.presentation.designsystem.RunIcon
 
 @Composable
-fun RuniqueFloatingActionButton(
+fun RunAwayFloatingActionButton(
     icon: ImageVector,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -53,9 +53,9 @@ fun RuniqueFloatingActionButton(
 
 @Preview
 @Composable
-private fun RuniqueFloatingActionButtonPrev() {
+private fun RunAwayFloatingActionButtonPrev() {
     RunAwayTheme {
-        RuniqueFloatingActionButton(
+        RunAwayFloatingActionButton(
             icon = RunIcon,
             onClick = {}
         )

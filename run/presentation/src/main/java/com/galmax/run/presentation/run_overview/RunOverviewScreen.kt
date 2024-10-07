@@ -25,9 +25,9 @@ import com.galmax.core.presentation.designsystem.LogoIcon
 import com.galmax.core.presentation.designsystem.LogoutIcon
 import com.galmax.core.presentation.designsystem.RunAwayTheme
 import com.galmax.core.presentation.designsystem.RunIcon
-import com.galmax.core.presentation.designsystem.components.RuniqueFloatingActionButton
-import com.galmax.core.presentation.designsystem.components.RuniqueScaffold
-import com.galmax.core.presentation.designsystem.components.RuniqueToolbar
+import com.galmax.core.presentation.designsystem.components.RunAwayFloatingActionButton
+import com.galmax.core.presentation.designsystem.components.RunAwayScaffold
+import com.galmax.core.presentation.designsystem.components.RunAwayToolbar
 import com.galmax.core.presentation.designsystem.components.util.DropDownItem
 import com.galmax.run.presentation.R
 import com.galmax.run.presentation.run_overview.components.RunListItem
@@ -66,11 +66,11 @@ private fun RunOverviewScreen(
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
         state = topAppBarState
     )
-    RuniqueScaffold(
+    RunAwayScaffold(
         topAppBar = {
-            RuniqueToolbar(
+            RunAwayToolbar(
                 showBackButton = false,
-                title = stringResource(id = R.string.runique),
+                title = stringResource(id = R.string.run_away),
                 scrollBehavior = scrollBehavior,
                 menuItems = listOf(
                     DropDownItem(
@@ -99,7 +99,7 @@ private fun RunOverviewScreen(
             )
         },
         floatingActionButton = {
-            RuniqueFloatingActionButton(
+            RunAwayFloatingActionButton(
                 icon = RunIcon,
                 onClick = {
                     onAction(RunOverviewAction.OnStartClick)

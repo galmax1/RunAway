@@ -46,7 +46,7 @@ import com.galmax.core.presentation.designsystem.R
 import com.galmax.core.presentation.designsystem.RunAwayTheme
 
 @Composable
-fun RuniquePasswordTextField(
+fun RunAwayPasswordTextField(
     state: TextFieldState,
     isPasswordVisible: Boolean,
     onTogglePasswordVisibility: () -> Unit,
@@ -153,9 +153,9 @@ fun RuniquePasswordTextField(
 
 @Preview
 @Composable
-private fun RuniquePasswordTextFieldPreview() {
+private fun RunAwayPasswordTextFieldPreview() {
     RunAwayTheme {
-        RuniquePasswordTextField(
+        RunAwayPasswordTextField(
             state = rememberTextFieldState(),
             hint = "Example@test.com",
             title = "Email",

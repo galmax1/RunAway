@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.galmax.core.presentation.designsystem.RunAwayTheme
 
 @Composable
-fun RuniqueScaffold(
+fun RunAwayScaffold(
     modifier: Modifier = Modifier,
     withGradient: Boolean = true,
     topAppBar: @Composable () -> Unit = {},
@@ -34,9 +34,9 @@ fun RuniqueScaffold(
 
 @Preview
 @Composable
-private fun RuniqueScaffoldPreview() {
+private fun RunAwayScaffoldPreview() {
     RunAwayTheme {
-        RuniqueScaffold(
+        RunAwayScaffold(
 
         )
     }

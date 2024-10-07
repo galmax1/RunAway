@@ -39,11 +39,11 @@ import com.galmax.core.presentation.designsystem.LogoIcon
 import com.galmax.core.presentation.designsystem.Poppins
 import com.galmax.core.presentation.designsystem.R
 import com.galmax.core.presentation.designsystem.RunAwayTheme
-import com.galmax.core.presentation.designsystem.RuniqueGreen
+import com.galmax.core.presentation.designsystem.RunAwayGreen
 import com.galmax.core.presentation.designsystem.components.util.DropDownItem
 
 @Composable
-fun RuniqueToolbar(
+fun RunAwayToolbar(
     showBackButton: Boolean,
     title: String,
     modifier: Modifier = Modifier,
@@ -134,9 +134,9 @@ fun RuniqueToolbar(
 
 @Preview
 @Composable
-private fun RuniqueToolbarPreview() {
+private fun RunAwayToolbarPreview() {
     RunAwayTheme {
-        RuniqueToolbar(
+        RunAwayToolbar(
             showBackButton = false,
             title = "Runique",
             modifier = Modifier.fillMaxWidth(),
@@ -144,7 +144,7 @@ private fun RuniqueToolbarPreview() {
                 Icon(
                     imageVector = LogoIcon,
                     contentDescription = null,
-                    tint = RuniqueGreen,
+                    tint = RunAwayGreen,
                     modifier = Modifier
                         .size(25.dp)
                 )

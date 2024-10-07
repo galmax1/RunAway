@@ -47,7 +47,7 @@ import com.galmax.core.presentation.designsystem.EmailIcon
 import com.galmax.core.presentation.designsystem.RunAwayTheme
 
 @Composable
-fun RuniqueTextField(
+fun RunAwayTextField(
     state: TextFieldState,
     startIcon: ImageVector?,
     endIcon: ImageVector?,
@@ -173,9 +173,9 @@ fun RuniqueTextField(
 
 @Preview
 @Composable
-private fun RuniqueTextFieldPreview() {
+private fun RunAwayTextFieldPreview() {
     RunAwayTheme {
-        RuniqueTextField(
+        RunAwayTextField(
             state = rememberTextFieldState(),
             startIcon = EmailIcon,
             endIcon = CheckIcon,

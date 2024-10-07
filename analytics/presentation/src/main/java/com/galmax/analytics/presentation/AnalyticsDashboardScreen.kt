@@ -19,8 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.galmax.analytics.presentation.components.AnalyticsCard
 import com.galmax.core.presentation.designsystem.RunAwayTheme
-import com.galmax.core.presentation.designsystem.components.RuniqueScaffold
-import com.galmax.core.presentation.designsystem.components.RuniqueToolbar
+import com.galmax.core.presentation.designsystem.components.RunAwayScaffold
+import com.galmax.core.presentation.designsystem.components.RunAwayToolbar
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -46,9 +46,9 @@ private fun AnalyticsDashboardScreen(
     state: AnalyticsDashboardState?,
     onAction: (AnalyticsAction) -> Unit
 ) {
-    RuniqueScaffold(
+    RunAwayScaffold(
         topAppBar = {
-            RuniqueToolbar(
+            RunAwayToolbar(
                 showBackButton = true,
                 title = stringResource(id = R.string.analytics),
                 onBackClick = {

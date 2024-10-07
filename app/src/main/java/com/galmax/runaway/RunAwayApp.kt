@@ -20,7 +20,7 @@ import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-class RuniqueApp : Application() {
+class RunAwayApp : Application() {
 
     val applicationScope = CoroutineScope(SupervisorJob())
 
@@ -32,7 +32,7 @@ class RuniqueApp : Application() {
 
         startKoin {
             androidLogger()
-            androidContext(this@RuniqueApp)
+            androidContext(this@RunAwayApp)
             workManagerFactory()
             modules(
                 appModule,
