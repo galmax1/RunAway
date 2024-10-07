@@ -135,11 +135,9 @@ To build the project, follow these steps:
 3. **Add required data:**
     - To successfully build the project you need to specify your own **backend server API key** 
       and **Google Maps Api key** in the local configuration file `local.properties`:
-    - 
-```bash
-API_KEY = [Replace with your own API key]
-MAPS_API_KEY = [Replace with your own API key]
-```
+      ```bash
+         API_KEY = [Replace with your own API key]
+         MAPS_API_KEY = [Replace with your own API key]
 
 4. **Build the Project:**
     - You can build the project by selecting `Build > Make Project` or by clicking the `Build` icon
