@@ -115,15 +115,32 @@ graph LR
 
 ## Analytics module
 
-You can open a file from **Google Drive**, **Dropbox** or **GitHub** by opening the **Synchronize** 
-sub-menu and clicking **Open from**. Once opened in the workspace, any modification in the file will 
-be automatically synced.
+This dynamic feature module provides analytics on the total number of runs within the app. 
+By using on-demand delivery, it allows users to download and access this feature only when necessary, 
+optimizing app size and performance. The module efficiently tracks and analyzes run data, 
+offering insights without impacting the core app’s functionality.
 
 # Setup for personal use
 
-Publishing in StackEdit makes it simple for you to publish online your files. Once you're happy 
-with a file, you can publish it to different hosting platforms like **Blogger**, **Dropbox**, 
-**Gist**, **GitHub**, **Google Drive**, **WordPress** and **Zendesk**. 
-With [Handlebars templates](http://handlebarsjs.com/), you have full control over what you export.
+To build the project, follow these steps:
+
+1. **Open the Project in Android Studio:**
+    - Launch Android Studio.
+    - Click on `File > Open...` and select the root directory of your project.
+
+2. **Sync Gradle:**
+    - Android Studio will automatically detect the Gradle files and sync the project. If not, you
+      can manually sync by clicking on `Sync Project with Gradle Files` in the toolbar.
+
+3. **Add required data:**
+    - To successfully build the project you need to specify your own **backend server API key** 
+      and **Google Maps Api** in the local configuration file `local.properties`:
+   ```bash
+   API_KEY = [Replace with your own API key]
+   MAPS_API_KEY = [Replace with your own API key]
+
+4. **Build the Project:**
+    - You can build the project by selecting `Build > Make Project` or by clicking the `Build` icon
+      in the toolbar.
 
 
