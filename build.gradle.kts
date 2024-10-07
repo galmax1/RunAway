@@ -9,4 +9,10 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.androidDynamicFeature) apply false
     alias(libs.plugins.mapsplatform.secrets.plugin) apply false
+    //id("dev.iurysouza.modulegraph") version "0.10.1"
 }
+
+//moduleGraphConfig {
+//    readmePath.set("./README.md")
+//    heading = "### Module Graph"
+//}
