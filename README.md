@@ -5,9 +5,9 @@ you can read me. If you want to play with Markdown, you can edit me.
 Once you have finished with me, you can create new files by opening the **file explorer** 
 on the left corner of the navigation bar.
 
-| ![screenshot1](screenshots/Screenshot_1.png) |Image2|Image3|Image4|
-|----------------------------------------------|-|-|-|
-| Image5                                       |Image6|Image7|Image8|
+| ![screenshot1](screenshots/Screenshot_1.png) | ![screenshot2](screenshots/Screenshot_2.png) | ![screenshot3](screenshots/Screenshot_3.png) | ![screenshot4](screenshots/Screenshot_4.png) |
+|----------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
+| ![screenshot5](screenshots/Screenshot_5.png) | ![screenshot6](screenshots/Screenshot_6.png) | ![screenshot7](screenshots/Screenshot_7.png) | ![screenshot8](screenshots/Screenshot_8.png) |
 
 # Build with
 
