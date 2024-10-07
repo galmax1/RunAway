@@ -11,8 +11,17 @@ on the left corner of the navigation bar.
 
 # Build with
 
-StackEdit stores your files in your browser, which means all your files are automatically saved 
-locally and are accessible **offline!**
+| Technology                                                                                     | Description                                                                                       | Version |
+|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|---------|
+| ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=android&logoColor=white) | **Jetpack Compose** - Modern toolkit for building native Android UIs using declarative components | Bom 2024.02.02  |
+| ![Kotlin Coroutines](https://img.shields.io/badge/Kotlin%20Coroutines-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white) | **Kotlin Coroutines** - Asynchronous programming framework for managing background tasks          | 1.8.0   |
+| ![Flow](https://img.shields.io/badge/Kotlin%20Flow-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white) | **Flow** - Kotlin's reactive streams API for handling data streams and asynchronous operations    | 1.8.0   |
+| ![Jetpack Room](https://img.shields.io/badge/Jetpack%20Room-4285F4?style=for-the-badge&logo=android&logoColor=white) | **Jetpack Room** - Persistence library for local storage using SQLite                             | 2.6.1   |
+| ![Jetpack Compose Navigation](https://img.shields.io/badge/Jetpack%20Compose%20Navigation-4285F4?style=for-the-badge&logo=android&logoColor=white) | **Navigation Compose** - Navigation library for managing UI navigation in Compose apps            | 2.7.7   |
+| ![Koin](https://img.shields.io/badge/Koin-FFD700?style=for-the-badge&logo=kotlin&logoColor=white) | **Koin** - Lightweight dependency injection framework for Kotlin                                  | 3.5.3   |
+| ![Ktor](https://img.shields.io/badge/Ktor-0095D5?style=for-the-badge&logo=ktor&logoColor=white) | **Ktor** - Framework for building asynchronous servers and clients in Kotlin                      | 2.3.8   |
+
+> These technologies were selected to ensure efficient, scalable, and modern Android app development.
 
 # Module Graph
 ```mermaid
@@ -116,3 +125,5 @@ Publishing in StackEdit makes it simple for you to publish online your files. On
 with a file, you can publish it to different hosting platforms like **Blogger**, **Dropbox**, 
 **Gist**, **GitHub**, **Google Drive**, **WordPress** and **Zendesk**. 
 With [Handlebars templates](http://handlebarsjs.com/), you have full control over what you export.
+
+
