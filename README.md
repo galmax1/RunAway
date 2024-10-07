@@ -1,9 +1,12 @@
 # Welcome to RunAway app!
 
-Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, 
-you can read me. If you want to play with Markdown, you can edit me. 
-Once you have finished with me, you can create new files by opening the **file explorer** 
-on the left corner of the navigation bar.
+**RunAway** is a simple yet powerful running tracker app developed as a learning project to explore 
+new technologies and approaches in Android development. Built entirely with **Jetpack Compose UI** 
+and **Kotlin Coroutines**, the app embraces a reactive approach using **Flow** for real-time data handling. 
+It features a **multi-modular architecture** with **Gradle convention plugins** set up to simplify 
+module creation and management. Through this project, key industry practices such as cloud sync, 
+offline-first functionality, and a scalable structure were implemented, making it a practical tool 
+for understanding modern Android development techniques.
 
 | ![screenshot1](screenshots/Screenshot_1.png) | ![screenshot2](screenshots/Screenshot_2.png) | ![screenshot3](screenshots/Screenshot_3.png) | ![screenshot4](screenshots/Screenshot_4.png) |
 |----------------------------------------------|----------------------------------------------|----------------------------------------------|----------------------------------------------|
