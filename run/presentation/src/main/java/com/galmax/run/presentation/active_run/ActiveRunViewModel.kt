@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.galmax.core.domain.Timer
 import com.galmax.core.domain.location.Location
 import com.galmax.core.domain.run.Run
 import com.galmax.core.domain.run.RunRepository
@@ -13,22 +14,26 @@ import com.galmax.core.domain.util.Result
 import com.galmax.core.presentation.ui.asUiText
 import com.galmax.run.domain.LocationDataCalculator
 import com.galmax.run.domain.RunningTracker
+import com.galmax.run.domain.WatchConnector
 import com.galmax.run.presentation.active_run.service.ActiveRunService
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
 class ActiveRunViewModel(
     private val runningTracker: RunningTracker,
-    private val runRepository: RunRepository
+    private val runRepository: RunRepository,
+    private val watchConnector: WatchConnector
 ) : ViewModel() {
 
     var state by mutableStateOf(
@@ -54,6 +59,14 @@ class ActiveRunViewModel(
     }.stateIn(viewModelScope, SharingStarted.Lazily, false)
 
     init {
+        watchConnector
+            .connectedDevice
+            .filterNotNull()
+            .onEach {
+                Timber.d("New device detected: ${it.displayName}")
+            }
+            .launchIn(viewModelScope)
+
         hasLocationPermission
             .onEach { hasPermission ->
                 if (hasPermission) {

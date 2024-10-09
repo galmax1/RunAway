@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.galmax.runaway.MainViewModel
-import com.galmax.runaway.RunAwayApp
+import com.galmax.runaway.RunawayApp
 import kotlinx.coroutines.CoroutineScope
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModelOf
@@ -22,7 +22,7 @@ val appModule = module {
     }
 
     single<CoroutineScope> {
-        (androidApplication() as RunAwayApp).applicationScope
+        (androidApplication() as RunawayApp).applicationScope
     }
 
     viewModelOf(::MainViewModel)

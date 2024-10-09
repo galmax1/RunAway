@@ -5,6 +5,8 @@ import com.galmax.run.data.CreateRunWorker
 import com.galmax.run.data.DeleteRunWorker
 import com.galmax.run.data.FetchRunsWorker
 import com.galmax.run.data.SyncRunWorkerScheduler
+import com.galmax.run.data.connectivity.PhoneToWatchConnector
+import com.galmax.run.domain.WatchConnector
 import org.koin.androidx.workmanager.dsl.workerOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
@@ -16,4 +18,5 @@ val runDataModule = module {
     workerOf(::DeleteRunWorker)
 
     singleOf(::SyncRunWorkerScheduler).bind<SyncRunScheduler>()
+    singleOf(::PhoneToWatchConnector).bind<WatchConnector>()
 }
