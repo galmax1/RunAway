@@ -22,6 +22,10 @@ gradlePlugin {
             id = "runaway.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
+        register("androidApplicationWearCompose") {
+            id = "runaway.android.application.wear.compose"
+            implementationClass = "AndroidApplicationWearComposeConventionPlugin"
+        }
         register("androidLibrary") {
             id = "runaway.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
