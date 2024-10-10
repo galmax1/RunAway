@@ -3,6 +3,7 @@ package com.galmax.wear.run.presentation
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -39,6 +40,7 @@ import com.galmax.core.presentation.designsystem.FinishIcon
 import com.galmax.core.presentation.designsystem.PauseIcon
 import com.galmax.core.presentation.designsystem.StartIcon
 import com.galmax.core.presentation.designsystem_wear.RunawayTheme
+import com.galmax.core.presentation.ui.ObserveAsEvents
 import com.galmax.core.presentation.ui.formatted
 import com.galmax.core.presentation.ui.toFormattedHeartRate
 import com.galmax.core.presentation.ui.toFormattedKm
@@ -50,6 +52,19 @@ fun TrackerScreenRoot(
     viewModel: TrackerViewModel = koinViewModel()
 ) {
 
+    val context = LocalContext.current
+    ObserveAsEvents(flow = viewModel.events) { event ->
+        when (event) {
+            is TrackerEvent.Error -> {
+                Toast.makeText(
+                    context,
+                    event.message.asString(context),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            TrackerEvent.RunFinished -> Unit
+        }
+    }
     TrackerScreen(
         state = viewModel.state,
         onAction = viewModel::onAction

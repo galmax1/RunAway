@@ -1,15 +1,22 @@
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
 package com.galmax.wear.run.domain
 
 import com.galmax.core.connectivity.domain.messaging.MessagingAction
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterIsInstance
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
+import kotlin.io.path.fileVisitor
 import kotlin.time.Duration
 
 class RunningTracker(
@@ -64,6 +71,30 @@ class RunningTracker(
                 }
             }
             .launchIn(applicationScope)
+
+        watchToPhoneConnector
+            .connectedDevice
+            .filterNotNull()
+            .onEach {
+                exerciseTracker.prepareExercise()
+            }
+            .launchIn(applicationScope)
+
+        isTracking
+            .flatMapLatest { isTracking ->
+                if (isTracking) {
+                    exerciseTracker.heartRate
+                } else flowOf()
+            }
+            .onEach { heartRate ->
+                watchToPhoneConnector.sendActionToPhone(MessagingAction.HeartRateUpdate(heartRate))
+                _heartRate.value = heartRate
+            }
+            .launchIn(applicationScope)
+    }
+
+    fun setIsTracking(isTracking: Boolean) {
+        _isTracking.value = isTracking
     }
 
 }
