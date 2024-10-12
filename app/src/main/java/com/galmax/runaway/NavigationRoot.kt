@@ -11,8 +11,8 @@ import androidx.navigation.navDeepLink
 import com.galmax.auth.presentation.intro.IntroScreenRoot
 import com.galmax.auth.presentation.login.LoginScreenRoot
 import com.galmax.auth.presentation.register.RegisterScreenRoot
+import com.galmax.core.notification.ActiveRunService
 import com.galmax.run.presentation.active_run.ActiveRunScreenRoot
-import com.galmax.run.presentation.active_run.service.ActiveRunService
 import com.galmax.run.presentation.run_overview.RunOverviewScreenRoot
 
 @Composable

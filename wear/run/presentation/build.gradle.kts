@@ -11,6 +11,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.wear)
     implementation(libs.androidx.wear.compose.foundation)
     implementation(libs.androidx.wear.compose.material)
     implementation(libs.androidx.wear.compose.ui.tooling)
@@ -27,6 +28,7 @@ dependencies {
 
     implementation(projects.core.presentation.designsystemWear)
     implementation(projects.core.presentation.ui)
+    implementation(projects.core.notification)
     implementation(projects.core.domain)
     implementation(projects.core.connectivity.domain)
     implementation(projects.wear.run.domain)

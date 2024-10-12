@@ -1,4 +1,7 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
+@file:OptIn(
+    ExperimentalMaterial3Api::class,
+    ExperimentalCoroutinesApi::class
+)
 
 package com.galmax.run.presentation.active_run
 
@@ -20,11 +23,14 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.galmax.core.notification.ActiveRunService
 import com.galmax.core.presentation.designsystem.RunAwayTheme
 import com.galmax.core.presentation.designsystem.StartIcon
 import com.galmax.core.presentation.designsystem.StopIcon
@@ -38,11 +44,11 @@ import com.galmax.core.presentation.ui.ObserveAsEvents
 import com.galmax.run.presentation.R
 import com.galmax.run.presentation.active_run.components.RunDataCard
 import com.galmax.run.presentation.active_run.maps.TrackerMap
-import com.galmax.run.presentation.active_run.service.ActiveRunService
 import com.galmax.run.presentation.util.hasLocationPermission
 import com.galmax.run.presentation.util.hasNotificationPermission
 import com.galmax.run.presentation.util.shouldShowLocationPermissionRationale
 import com.galmax.run.presentation.util.shouldShowNotificationPermissionRationale
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.compose.koinViewModel
 import java.io.ByteArrayOutputStream
 
@@ -148,8 +154,9 @@ private fun ActiveRunScreen(
         }
     }
 
+    val isServiceActive by ActiveRunService.isServiceActive.collectAsStateWithLifecycle()
     LaunchedEffect(key1 = state.shouldTrack) {
-        if (context.hasLocationPermission() && state.shouldTrack && !ActiveRunService.isServiceActive) {
+        if (context.hasLocationPermission() && state.shouldTrack && !isServiceActive) {
             onServiceToggle(true)
         }
     }

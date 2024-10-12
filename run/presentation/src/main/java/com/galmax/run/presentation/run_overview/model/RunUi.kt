@@ -1,7 +1,5 @@
 package com.galmax.run.presentation.run_overview.model
 
-import kotlin.time.Duration
-
 data class RunUi(
     val id: String,
     val duration: String,
@@ -11,7 +9,9 @@ data class RunUi(
     val maxSpeed: String,
     val pace: String,
     val totalElevation: String,
-    val mapPictureUrl: String?
+    val mapPictureUrl: String?,
+    val avgHeartRate: String,
+    val maxHeartRate: String
 )
 
 

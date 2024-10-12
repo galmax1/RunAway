@@ -39,6 +39,7 @@ class PhoneToWatchConnector(
         .flatMapLatest { connectedDevices ->
             val node = connectedDevices.firstOrNull()
             if (node != null && node.isNearby) {
+                println("Watch is connected")
                 _connectedNode.value = node
                 messagingClient.connectToNode(node.id)
             } else flowOf()
