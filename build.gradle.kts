@@ -13,6 +13,6 @@ plugins {
 }
 
 //moduleGraphConfig {
-//    readmePath.set("./README.md")
+//    readmePath.set("./README_1.md")
 //    heading = "### Module Graph"
 //}

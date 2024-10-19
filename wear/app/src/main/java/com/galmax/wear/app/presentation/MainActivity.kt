@@ -20,13 +20,13 @@ class MainActivity : ComponentActivity() {
                 TrackerScreenRoot(
                     onServiceToggle = { shouldStartRunning ->
                         if (shouldStartRunning) {
-                            startActivity(
+                            startService(
                                 ActiveRunService.createStartIntent(
                                     applicationContext, this::class.java
                                 )
                             )
                         } else {
-                            startActivity(
+                            startService(
                                 ActiveRunService.createStopIntent(
                                     applicationContext
                                 )
